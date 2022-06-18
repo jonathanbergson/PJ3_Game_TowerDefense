@@ -18,22 +18,22 @@ public class Spawner : MonoBehaviour
         countDownWaves = 2f;
     }
 
-    void Update()
+    private void Update()
     {
         if (countDownWaves <= 0f)
         {
-            SpwanEnemies();
+            SpawnEnemies();
             countDownWaves = timeBetweenWaves;
         }
         countDownWaves -= Time.deltaTime;
 
         if (waveText)
         {
-            waveText.text = System.Math.Round(countDownWaves, 1).ToString() + "s";
+            waveText.text = System.Math.Round(countDownWaves, 1) + "s";
         }
     }
 
-    private void SpwanEnemies()
+    private void SpawnEnemies()
     {
         int index = Random.Range(0, enemiesWaveRange.Length);
         InstantiateEnemies(enemiesWaveRange[index]);
