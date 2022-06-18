@@ -7,6 +7,9 @@ public class CharacterTower : MonoBehaviour
     [SerializeField] private Transform axisTransform;
     [SerializeField] private GameObject shootPrefab;
 
+    [Header("Character Settings")]
+    [SerializeField] private Animator animator;
+
     private string _enemyTag = Constants.EnemyTag;
     private Transform _targetTransform;
 
