@@ -45,7 +45,7 @@ public class Spawner : MonoBehaviour
         {
             for (int i = 0; i < count; i++)
             {
-                Enemie enemieInstance = Instantiate(enemie, transform.position, Quaternion.identity).GetComponent<Enemie>();
+                Enemie enemieInstance = Instantiate(enemie, transform.position, transform.rotation).GetComponent<Enemie>();
                 enemieInstance.target = target;
             }
         }
