@@ -10,6 +10,7 @@ public class Enemie : MonoBehaviour
 
     void Start()
     {
+        gameObject.tag = Constants.EnemyTag;
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 

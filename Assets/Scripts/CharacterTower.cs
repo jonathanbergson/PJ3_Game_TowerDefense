@@ -1,23 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterTower : MonoBehaviour
 {
     [Header("Tower Settings")]
     [SerializeField] private float range = 5f;
-    [SerializeField] private Transform engrenagem;
+    [SerializeField] private Transform axisTransform;
+    [SerializeField] private GameObject shootPrefab;
 
-    [Header("Enemy Settings")]
-    [SerializeField] private string enemyTag = "inimigo";
-    [SerializeField] private Transform target;
+    private string _enemyTag = Constants.EnemyTag;
+    private Transform _targetTransform;
 
-    [Header("Ataque")]
+    [Header("Attack Settings")]
     [SerializeField] private float fireRate = 1f;
-    [SerializeField] private float fireCountdown = 0f;
-
-    [Header("Projetil")]
-    [SerializeField] private GameObject projetilPrefab;
+    [SerializeField] private float fireCountdown;
     [SerializeField] private Transform firePoint;
 
     private void Start()
@@ -27,12 +22,12 @@ public class CharacterTower : MonoBehaviour
 
     private void Update()
     {
-        if (target != null)
+        if (_targetTransform != null)
         {
-            Vector3 direcaoParaMirar = target.position - transform.position;
+            Vector3 direcaoParaMirar = _targetTransform.position - transform.position;
             Quaternion rotacaoNecessariaParaVirar = Quaternion.LookRotation(direcaoParaMirar);
-            Vector3 rotacaoParaMirar = Quaternion.Lerp(engrenagem.rotation, rotacaoNecessariaParaVirar, Time.deltaTime * 4).eulerAngles;
-            engrenagem.rotation = Quaternion.Euler(0f, rotacaoParaMirar.y, 0f);
+            Vector3 rotacaoParaMirar = Quaternion.Lerp(axisTransform.rotation, rotacaoNecessariaParaVirar, Time.deltaTime * 4).eulerAngles;
+            axisTransform.rotation = Quaternion.Euler(0f, rotacaoParaMirar.y, 0f);
 
             if (fireCountdown <= 0f)
             {
@@ -46,7 +41,7 @@ public class CharacterTower : MonoBehaviour
 
     private void UpdateTarget()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(Constants.ENEMY_TAG);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(Constants.EnemyTag);
         GameObject enemiyClose = null;
         float distanceToEnemyClose = Mathf.Infinity;
 
@@ -63,22 +58,22 @@ public class CharacterTower : MonoBehaviour
 
         if (enemiyClose != null && distanceToEnemyClose < range)
         {
-            target = enemiyClose.transform;
+            _targetTransform = enemiyClose.transform;
         }
         else
         {
-            target = null;
+            _targetTransform = null;
         }
     }
 
     private void Shoot()
     {
-        GameObject projetilGObject = Instantiate(projetilPrefab, firePoint.position, firePoint.rotation);
+        GameObject projetilGObject = Instantiate(shootPrefab, firePoint.position, firePoint.rotation);
         Shoot projetil = projetilGObject.GetComponent<Shoot>();
 
         if (projetil != null)
         {
-            projetil.BuscarAlvo(target);
+            projetil.BuscarAlvo(_targetTransform);
         }
     }
 

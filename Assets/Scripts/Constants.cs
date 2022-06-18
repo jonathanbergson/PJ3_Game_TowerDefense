@@ -1,4 +1,4 @@
-public class Constants
+public static class Constants
 {
-    public const string ENEMY_TAG = "enemy";
+    public const string EnemyTag = "enemy";
 }
