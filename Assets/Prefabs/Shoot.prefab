@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  velocidade: 5
+  velocidade: 8
 --- !u!96 &2728709078839253451
 TrailRenderer:
   serializedVersion: 2
