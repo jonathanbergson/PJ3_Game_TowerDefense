@@ -1,12 +1,15 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
     [SerializeField] private Transform target;
     [SerializeField] private float velocidade = 70f;
+
+    private void Awake()
+    {
+        gameObject.tag = Constants.ShootTag;
+    }
 
     public void BuscarAlvo(Transform umTarget)
     {
@@ -15,26 +18,16 @@ public class Shoot : MonoBehaviour
 
     private void Update()
     {
-        if (target == null)
+        if (target)
+        {
+            Vector3 direcao = new Vector3(target.position.x - transform.position.x, 0, target.position.z - transform.position.z);
+            float distanciaNesteFrame = velocidade * Time.deltaTime;
+
+            transform.Translate(direcao.normalized * distanciaNesteFrame, Space.World);
+        }
+        else
         {
             Destroy(gameObject);
-            return;
         }
-
-        Vector3 direcao = target.position - transform.position;
-        float distanciaNesteFrame = velocidade * Time.deltaTime;
-
-        if (direcao.magnitude <= distanciaNesteFrame)
-        {
-            AcertarAlvo();
-            return;
-        }
-
-        transform.Translate(direcao.normalized * distanciaNesteFrame, Space.World);
-    }
-
-    private void AcertarAlvo()
-    {
-        Destroy(gameObject);
     }
 }

@@ -15,7 +15,7 @@ public class CharacterTower : MonoBehaviour
 
     [Header("Attack Settings")]
     [SerializeField] private float fireRate = 1f;
-    [SerializeField] private float fireCountdown;
+    private float _fireCountdown;
     [SerializeField] private Transform firePoint;
 
     private void Start()
@@ -32,13 +32,13 @@ public class CharacterTower : MonoBehaviour
             Vector3 rotacaoParaMirar = Quaternion.Lerp(axisTransform.rotation, rotacaoNecessariaParaVirar, Time.deltaTime * 4).eulerAngles;
             axisTransform.rotation = Quaternion.Euler(0f, rotacaoParaMirar.y, 0f);
 
-            if (fireCountdown <= 0f)
+            if (_fireCountdown <= 0f)
             {
                 Shoot();
-                fireCountdown = 1f/fireRate;
+                _fireCountdown = 1f/fireRate;
             }
 
-            fireCountdown -= Time.deltaTime;
+            _fireCountdown -= Time.deltaTime;
         }
     }
 

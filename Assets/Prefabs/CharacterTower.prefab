@@ -108,11 +108,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d5b4ecdef11225b5baded16bbefc44c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 7
+  range: 8
   axisTransform: {fileID: 2824352726159475772}
   shootPrefab: {fileID: 3007484991859190450, guid: 56149c6be329f7c41bd9fb48d43c7ae0, type: 3}
   animator: {fileID: 7637591626405250841}
-  fireRate: 1
+  fireRate: 2
   fireCountdown: 0
   firePoint: {fileID: 2824352726070335388}
 --- !u!1001 &2824352727444923294

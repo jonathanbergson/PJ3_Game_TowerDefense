@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,36 +9,45 @@ public class Enemie : MonoBehaviour
 
     [SerializeField] private int live = 2;
 
-    void Start()
+    private void Awake()
     {
         gameObject.tag = Constants.EnemyTag;
+    }
+
+    private void Start()
+    {
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    void Update()
+    private void Update()
     {
         if (target)
         {
             navMeshAgent.destination = target.position;
         }
+        else
+        {
+            navMeshAgent.ResetPath();
+        }
     }
 
-    public void Damage()
+    private void Damage()
     {
         live -= 1;
 
         if (live <= 0)
         {
-            Destroy(gameObject);
             BuildManager.instance.MetralhadoraIncrementReward();
+            Destroy(gameObject);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("shoot"))
+        if (other.CompareTag(Constants.ShootTag))
         {
             Damage();
+            Destroy(other.gameObject);
         }
     }
 }
