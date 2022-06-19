@@ -1,13 +1,15 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Enemie : MonoBehaviour
 {
     public Transform target;
-    private NavMeshAgent navMeshAgent;
+    private NavMeshAgent _navMeshAgent;
 
-    [SerializeField] private int live = 2;
+    private const int TotalHealth = 4;
+    [SerializeField] private int health;
+    [SerializeField] private Image healthBar;
 
     private void Awake()
     {
@@ -16,29 +18,36 @@ public class Enemie : MonoBehaviour
 
     private void Start()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        health = TotalHealth;
+        _navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
         if (target)
         {
-            navMeshAgent.destination = target.position;
+            _navMeshAgent.destination = target.position;
         }
         else
         {
-            navMeshAgent.ResetPath();
+            _navMeshAgent.ResetPath();
         }
     }
 
     private void Damage()
     {
-        live -= 1;
+        health -= 1;
 
-        if (live <= 0)
+        if (health <= 0)
         {
             BuildManager.instance.MetralhadoraIncrementReward();
             Destroy(gameObject);
+        }
+
+        if (healthBar)
+        {
+            Debug.Log(Mathf.Clamp((float) health / TotalHealth, 0f, 1f));
+            healthBar.fillAmount = Mathf.Clamp((float) health / TotalHealth, 0f, 1f);
         }
     }
 
