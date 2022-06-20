@@ -38,7 +38,6 @@ public class HealthManager : MonoBehaviour
 
         if (health <= 0)
         {
-            Debug.Log("You Dead!");
             ModalManager.Instance.ShowModal(ModalManager.ModalType.Loser);
         }
     }

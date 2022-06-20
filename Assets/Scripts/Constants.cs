@@ -1,8 +1,12 @@
 public static class Constants
 {
-    public const string ZombieTag = "Zombie";
-    public const string ShootTag = "Shoot";
-    public const string LevelTargetTag = "LevelTarget";
+    public struct Tags
+    {
+        public const string Shoot = "Shoot";
+        public const string Zombie = "Zombie";
+        public const string LevelSpawn = "LevelSpawn";
+        public const string LevelTarget = "LevelTarget";
+    }
 
     public enum Scenes
     {

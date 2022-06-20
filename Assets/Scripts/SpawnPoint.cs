@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Spawner : MonoBehaviour
+public class SpawnPoint : MonoBehaviour
 {
     public GameObject enemie;
     public Transform target;
@@ -13,8 +13,9 @@ public class Spawner : MonoBehaviour
 
     private int[] enemiesWaveRange = { 2, 4, 5, 8 };
 
-    private void Start()
+    private void Awake()
     {
+        gameObject.tag = Constants.Tags.LevelSpawn;
         countDownWaves = 2f;
     }
 
@@ -45,8 +46,7 @@ public class Spawner : MonoBehaviour
         {
             for (int i = 0; i < count; i++)
             {
-                Enemie enemieInstance = Instantiate(enemie, transform.position, transform.rotation).GetComponent<Enemie>();
-                enemieInstance.target = target;
+                Instantiate(enemie, transform.position, transform.rotation);
             }
         }
     }

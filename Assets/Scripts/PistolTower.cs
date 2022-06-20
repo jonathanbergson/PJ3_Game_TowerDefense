@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterTower : MonoBehaviour
+public class PistolTower : MonoBehaviour
 {
     [Header("Tower Settings")]
     [SerializeField] private float range = 5f;
@@ -10,7 +10,6 @@ public class CharacterTower : MonoBehaviour
     [Header("Character Settings")]
     [SerializeField] private Animator animator;
 
-    private string _enemyTag = Constants.ZombieTag;
     private Transform _targetTransform;
 
     [Header("Attack Settings")]
@@ -44,7 +43,7 @@ public class CharacterTower : MonoBehaviour
 
     private void UpdateTarget()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(Constants.ZombieTag);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(Constants.Tags.Zombie);
         GameObject enemiyClose = null;
         float distanceToEnemyClose = Mathf.Infinity;
 
@@ -76,7 +75,7 @@ public class CharacterTower : MonoBehaviour
 
         if (projetil != null)
         {
-            projetil.BuscarAlvo(_targetTransform);
+            projetil.SetTarget(_targetTransform);
         }
     }
 
