@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2824352726070335395}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.2009, z: 0.8928}
+  m_LocalPosition: {x: 0, y: 1.5759001, z: 0.8928}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2824352726469396088}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 2824352726469396088}
   - component: {fileID: 2824352726469396089}
   m_Layer: 0
-  m_Name: CharacterTower
+  m_Name: PistolTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 205a231dc0c31603299d56d8ce064645, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.082
+      value: 1.457
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 205a231dc0c31603299d56d8ce064645, type: 3}
       propertyPath: m_LocalPosition.z
@@ -163,7 +163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6e3d39f1167b3d8799813747d339b7b4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.375
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6e3d39f1167b3d8799813747d339b7b4, type: 3}
       propertyPath: m_LocalPosition.z

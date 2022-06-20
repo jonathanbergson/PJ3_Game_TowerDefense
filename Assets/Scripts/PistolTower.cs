@@ -9,9 +9,9 @@ public class PistolTower : MonoBehaviour
     [SerializeField] private GameObject bullet;
 
     [Header("Attack Settings")]
-    private float _fireCountdown;
     [SerializeField] private float fireFrequency = 1f;
     [SerializeField] private Transform firePoint;
+    private float _fireCountdown;
 
     private void Start()
     {
