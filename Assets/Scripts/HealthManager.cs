@@ -9,8 +9,8 @@ public class HealthManager : MonoBehaviour
     public static HealthManager Instance;
 
     [Header("Health")]
-    private const int MaxHealth = 10;
     [SerializeField] private int health;
+    [SerializeField] private int maxHealth;
     [SerializeField] private Image healthBar;
 
     private void Awake()
@@ -21,7 +21,13 @@ public class HealthManager : MonoBehaviour
 
     private void Start()
     {
-        health = MaxHealth;
+        health = maxHealth;
+    }
+
+    public void SetMaxHealth(int value)
+    {
+        health = value;
+        maxHealth = value;
     }
 
     public void TakeDamage(int damage = 1)
@@ -29,7 +35,7 @@ public class HealthManager : MonoBehaviour
         health -= damage;
         if (healthBar)
         {
-            float healthPercent = health / (float) MaxHealth;
+            float healthPercent = health / (float) maxHealth;
             healthBar.fillAmount = Mathf.Clamp(healthPercent, 0f, 1f);
         }
 

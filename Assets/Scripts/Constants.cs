@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public static class Constants
 {
     public const string ZombieTag = "Zombie";
@@ -10,5 +12,19 @@ public static class Constants
         Level01,
         Level02,
         Level03
+    }
+
+    public enum Levels
+    {
+        Level01,
+        Level02,
+        Level03
+    }
+
+    public enum Dificulties
+    {
+        Easy,
+        Medium,
+        Hard
     }
 }
