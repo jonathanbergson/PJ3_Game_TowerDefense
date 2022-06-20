@@ -10,8 +10,8 @@ public class SetupManager : Manager
     [SerializeField] private Text levelText;
 
     [Header("Setup points")]
-    [SerializeField] private Transform spawnPoint;
-    [SerializeField] private Transform targetPoint;
+    [SerializeField] private GameObject spawnPoint;
+    [SerializeField] private GameObject targetPoint;
 
     public LevelSettings Level01Settings = new LevelSettings
     {
@@ -55,7 +55,10 @@ public class SetupManager : Manager
 
     private void SetLevelName(string levelName)
     {
-        if (levelText) levelText.text = levelName;
+        if (levelText)
+        {
+            levelText.text = levelName;
+        }
     }
 
     private void SetMaxHealth(int maxHealth)
@@ -65,11 +68,19 @@ public class SetupManager : Manager
 
     private void SetSpawnPosition(Vector3 position)
     {
-        if (spawnPoint) spawnPoint.position = position;
+        if (spawnPoint)
+        {
+            spawnPoint.SetActive(true);
+            spawnPoint.transform.position = position;
+        }
     }
 
     private void SetTargetPosition(Vector3 position)
     {
-        if (targetPoint) targetPoint.position = position;
+        if (targetPoint)
+        {
+            targetPoint.SetActive(true);
+            targetPoint.transform.position = position;
+        }
     }
 }

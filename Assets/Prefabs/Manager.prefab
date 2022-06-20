@@ -2128,8 +2128,8 @@ MonoBehaviour:
   level: 0
   difficulty: 0
   levelText: {fileID: 1426923619235424608}
-  spawnPoint: {fileID: 4010990020313444449}
-  targetPoint: {fileID: 6057179838157373469}
+  spawnPoint: {fileID: 4010990020313444461}
+  targetPoint: {fileID: 6057179838157373473}
 --- !u!114 &7783108540278666296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2143,6 +2143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  maxHealth: 0
   healthBar: {fileID: 1426923619109410506}
 --- !u!114 &1549561660729365838
 MonoBehaviour:
@@ -2503,7 +2504,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4010990020313444449
 Transform:
   m_ObjectHideFlags: 0
@@ -2603,7 +2604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6057179838157373469
 Transform:
   m_ObjectHideFlags: 0
