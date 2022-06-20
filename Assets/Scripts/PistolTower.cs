@@ -2,19 +2,15 @@ using UnityEngine;
 
 public class PistolTower : MonoBehaviour
 {
-    [Header("Tower Settings")]
-    [SerializeField] private float range = 5f;
-    [SerializeField] private Transform axisTransform;
-    [SerializeField] private GameObject shootPrefab;
-
-    [Header("Character Settings")]
-    [SerializeField] private Animator animator;
-
     private Transform _targetTransform;
 
+    [Header("Tower Settings")]
+    [SerializeField] private float range = 8f;
+    [SerializeField] private GameObject bullet;
+
     [Header("Attack Settings")]
-    [SerializeField] private float fireRate = 1f;
     private float _fireCountdown;
+    [SerializeField] private float fireFrequency = 1f;
     [SerializeField] private Transform firePoint;
 
     private void Start()
@@ -28,13 +24,13 @@ public class PistolTower : MonoBehaviour
         {
             Vector3 direcaoParaMirar = _targetTransform.position - transform.position;
             Quaternion rotacaoNecessariaParaVirar = Quaternion.LookRotation(direcaoParaMirar);
-            Vector3 rotacaoParaMirar = Quaternion.Lerp(axisTransform.rotation, rotacaoNecessariaParaVirar, Time.deltaTime * 4).eulerAngles;
-            axisTransform.rotation = Quaternion.Euler(0f, rotacaoParaMirar.y, 0f);
+            Vector3 rotacaoParaMirar = Quaternion.Lerp(transform.rotation, rotacaoNecessariaParaVirar, Time.deltaTime * 4).eulerAngles;
+            transform.rotation = Quaternion.Euler(0f, rotacaoParaMirar.y, 0f);
 
             if (_fireCountdown <= 0f)
             {
                 Shoot();
-                _fireCountdown = 1f/fireRate;
+                _fireCountdown = 1f/fireFrequency;
             }
 
             _fireCountdown -= Time.deltaTime;
@@ -70,12 +66,10 @@ public class PistolTower : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject projetilGObject = Instantiate(shootPrefab, firePoint.position, firePoint.rotation);
-        Shoot projetil = projetilGObject.GetComponent<Shoot>();
-
-        if (projetil != null)
+        if (bullet)
         {
-            projetil.SetTarget(_targetTransform);
+            Bullet b = Instantiate(bullet, firePoint.position, firePoint.rotation).GetComponent<Bullet>();
+            b.Shoot(_targetTransform);
         }
     }
 

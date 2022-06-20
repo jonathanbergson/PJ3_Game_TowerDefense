@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Shoot : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float speed = 70f;
     private Transform _target;
+    private float _speed;
 
     private void Awake()
     {
@@ -16,7 +16,7 @@ public class Shoot : MonoBehaviour
         {
             Vector3 direction = _target.position - transform.position;
             direction.y = 0;
-            Vector3 translation = direction.normalized * (speed * Time.deltaTime);
+            Vector3 translation = direction.normalized * (_speed * Time.deltaTime);
             transform.Translate(translation, Space.World);
         }
         else
@@ -33,8 +33,9 @@ public class Shoot : MonoBehaviour
         }
     }
 
-    public void SetTarget(Transform zombieTarget)
+    public void Shoot(Transform target, float speed = 60f)
     {
-        _target = zombieTarget;
+        _target = target;
+        _speed = speed;
     }
 }
