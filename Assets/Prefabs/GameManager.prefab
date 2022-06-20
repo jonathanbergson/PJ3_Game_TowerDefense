@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 453831560364158651}
   - component: {fileID: 453831560364158650}
+  - component: {fileID: 9209391212213374924}
+  - component: {fileID: 8185176146049657182}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -48,3 +50,29 @@ MonoBehaviour:
   torretCost: 100
   torretReward: 50
   cashText: {fileID: 0}
+--- !u!114 &9209391212213374924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453831560364158652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fd53eb8ec616495b2d9865c71d0df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  healthBar: {fileID: 0}
+--- !u!114 &8185176146049657182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453831560364158652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c12eab3aeb4d8709ac90abc27d6275d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

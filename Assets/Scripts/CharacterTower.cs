@@ -10,7 +10,7 @@ public class CharacterTower : MonoBehaviour
     [Header("Character Settings")]
     [SerializeField] private Animator animator;
 
-    private string _enemyTag = Constants.EnemyTag;
+    private string _enemyTag = Constants.ZombieTag;
     private Transform _targetTransform;
 
     [Header("Attack Settings")]
@@ -44,7 +44,7 @@ public class CharacterTower : MonoBehaviour
 
     private void UpdateTarget()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(Constants.EnemyTag);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(Constants.ZombieTag);
         GameObject enemiyClose = null;
         float distanceToEnemyClose = Mathf.Infinity;
 

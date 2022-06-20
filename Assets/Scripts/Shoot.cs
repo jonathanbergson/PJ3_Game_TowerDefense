@@ -30,4 +30,12 @@ public class Shoot : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag(Constants.ZombieTag))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

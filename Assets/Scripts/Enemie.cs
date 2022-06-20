@@ -7,18 +7,18 @@ public class Enemie : MonoBehaviour
     public Transform target;
     private NavMeshAgent _navMeshAgent;
 
-    private const int TotalHealth = 4;
+    private const int MaxHealth = 4;
     [SerializeField] private int health;
     [SerializeField] private Image healthBar;
 
     private void Awake()
     {
-        gameObject.tag = Constants.EnemyTag;
+        gameObject.tag = Constants.ZombieTag;
     }
 
     private void Start()
     {
-        health = TotalHealth;
+        health = MaxHealth;
         _navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
@@ -46,17 +46,21 @@ public class Enemie : MonoBehaviour
 
         if (healthBar)
         {
-            Debug.Log(Mathf.Clamp((float) health / TotalHealth, 0f, 1f));
-            healthBar.fillAmount = Mathf.Clamp((float) health / TotalHealth, 0f, 1f);
+            float healthPercent = health / (float) MaxHealth;
+            healthBar.fillAmount = Mathf.Clamp(healthPercent, 0f, 1f);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(Constants.ShootTag))
+        switch (other.gameObject.tag)
         {
-            Damage();
-            Destroy(other.gameObject);
+            case Constants.ShootTag:
+                Damage();
+                break;
+            case Constants.LevelTargetTag:
+                Destroy(gameObject);
+                break;
         }
     }
 }
