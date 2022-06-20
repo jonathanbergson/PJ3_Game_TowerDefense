@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SetupManager : Manager
+public class SetupManager : MonoBehaviour
 {
+    public static SetupManager Instance;
+
     public Constants.Levels level;
     public Constants.Dificulties difficulty;
 
@@ -12,6 +14,12 @@ public class SetupManager : Manager
     [Header("Setup points")]
     [SerializeField] private GameObject spawnPoint;
     [SerializeField] private GameObject targetPoint;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
 
     public LevelSettings Level01Settings = new LevelSettings
     {
