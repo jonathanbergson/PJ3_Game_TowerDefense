@@ -36,20 +36,20 @@ public static class Constants
 
     public struct LevelSettings
     {
-        public string name;
-        public int maxHealth;
-        public Vector3 spawnPosition;
-        public Vector3 targetPosition;
-        public List<Wave> waveEasy;
+        public string Name;
+        public int MaxHealth;
+        public Vector3 SpawnPosition;
+        public Vector3 TargetPosition;
+        public List<Wave> WaveEasy;
     }
 
     public static LevelSettings Level01Settings = new LevelSettings
     {
-        name = "Level 01",
-        maxHealth = 100,
-        spawnPosition = new Vector3(-18,1,-26),
-        targetPosition = new Vector3(-40,1,10),
-        waveEasy = new List<Wave>
+        Name = "Level 01",
+        MaxHealth = 10,
+        SpawnPosition = new Vector3(-18,1,-26),
+        TargetPosition = new Vector3(-40,1,10),
+        WaveEasy = new List<Wave>
         {
             new Wave { ZombieCount = 2, DelayTimeToSpawn = 2f },
             new Wave { ZombieCount = 2, DelayTimeToSpawn = 4f },
@@ -60,11 +60,11 @@ public static class Constants
 
     public static LevelSettings Level02Settings = new LevelSettings
     {
-        name = "Level 02",
-        maxHealth = 14,
-        spawnPosition = new Vector3(-22,1,24),
-        targetPosition = new Vector3(-10,1,-24),
-        waveEasy = new List<Wave>
+        Name = "Level 02",
+        MaxHealth = 14,
+        SpawnPosition = new Vector3(-22,1,24),
+        TargetPosition = new Vector3(-10,1,-24),
+        WaveEasy = new List<Wave>
         {
             new Wave { ZombieCount = 3, DelayTimeToSpawn = 2f },
             new Wave { ZombieCount = 4, DelayTimeToSpawn = 4f },
@@ -75,11 +75,11 @@ public static class Constants
 
     public static LevelSettings Level03Settings = new LevelSettings
     {
-        name = "Level 03",
-        maxHealth = 12,
-        spawnPosition = new Vector3(-42,1,8),
-        targetPosition = new Vector3(-10,1,-17),
-        waveEasy = new List<Wave>
+        Name = "Level 03",
+        MaxHealth = 12,
+        SpawnPosition = new Vector3(-42,1,8),
+        TargetPosition = new Vector3(-10,1,-17),
+        WaveEasy = new List<Wave>
         {
             new Wave { ZombieCount = 3, DelayTimeToSpawn = 2f },
             new Wave { ZombieCount = 4, DelayTimeToSpawn = 4f },

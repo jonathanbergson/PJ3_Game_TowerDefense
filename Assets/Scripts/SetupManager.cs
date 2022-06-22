@@ -32,10 +32,10 @@ public class SetupManager : MonoBehaviour
             _ => Constants.Level01Settings
         };
 
-        SetLevelName(levelSelected.name);
-        SetMaxHealth(levelSelected.maxHealth);
-        SetSpawnPosition(levelSelected.spawnPosition, levelSelected.waveEasy);
-        SetTargetPosition(levelSelected.targetPosition);
+        SetLevelName(levelSelected.Name);
+        SetMaxHealth(levelSelected.MaxHealth);
+        SetSpawnPosition(levelSelected.SpawnPosition, levelSelected.WaveEasy);
+        SetTargetPosition(levelSelected.TargetPosition);
     }
 
     private void SetLevelName(string levelName)
