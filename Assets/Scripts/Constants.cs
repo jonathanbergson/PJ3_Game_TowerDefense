@@ -51,37 +51,42 @@ public static class Constants
         targetPosition = new Vector3(-40,1,10),
         waveEasy = new List<Wave>
         {
-            new Wave { ZombieCount = 3, DelayTimeToSpawn = 1f },
-            new Wave { ZombieCount = 5, DelayTimeToSpawn = 1f },
-            new Wave { ZombieCount = 8, DelayTimeToSpawn = 1f },
+            new Wave { ZombieCount = 2, DelayTimeToSpawn = 2f },
+            new Wave { ZombieCount = 2, DelayTimeToSpawn = 4f },
+            new Wave { ZombieCount = 3, DelayTimeToSpawn = 6f },
+            new Wave { ZombieCount = 4, DelayTimeToSpawn = 6f },
         }
     };
 
     public static LevelSettings Level02Settings = new LevelSettings
     {
         name = "Level 02",
-        maxHealth = 12,
-        spawnPosition = new Vector3(-10, 1, -4),
-        targetPosition = new Vector3(-10,1,10),
+        maxHealth = 14,
+        spawnPosition = new Vector3(-22,1,24),
+        targetPosition = new Vector3(-10,1,-24),
         waveEasy = new List<Wave>
         {
-            new Wave { ZombieCount = 3, DelayTimeToSpawn = 1f },
-            new Wave { ZombieCount = 5, DelayTimeToSpawn = 1f },
-            new Wave { ZombieCount = 8, DelayTimeToSpawn = 1f },
+            new Wave { ZombieCount = 3, DelayTimeToSpawn = 2f },
+            new Wave { ZombieCount = 4, DelayTimeToSpawn = 4f },
+            new Wave { ZombieCount = 4, DelayTimeToSpawn = 4f },
+            new Wave { ZombieCount = 4, DelayTimeToSpawn = 2f },
         }
     };
 
     public static LevelSettings Level03Settings = new LevelSettings
     {
-        name = "Level 02",
+        name = "Level 03",
         maxHealth = 12,
         spawnPosition = new Vector3(-10, 1, -4),
         targetPosition = new Vector3(0, 0, 0),
         waveEasy = new List<Wave>
         {
-            new Wave { ZombieCount = 3, DelayTimeToSpawn = 1f },
-            new Wave { ZombieCount = 5, DelayTimeToSpawn = 1f },
-            new Wave { ZombieCount = 8, DelayTimeToSpawn = 1f },
+            new Wave { ZombieCount = 3, DelayTimeToSpawn = 2f },
+            new Wave { ZombieCount = 4, DelayTimeToSpawn = 4f },
+            new Wave { ZombieCount = 4, DelayTimeToSpawn = 2f },
+            new Wave { ZombieCount = 6, DelayTimeToSpawn = 6f },
+            new Wave { ZombieCount = 8, DelayTimeToSpawn = 6f },
+            new Wave { ZombieCount = 8, DelayTimeToSpawn = 4f },
         }
     };
 
