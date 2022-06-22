@@ -4,10 +4,6 @@ using UnityEngine.UI;
 
 public class Zombie : MonoBehaviour
 {
-    private Transform _target;
-    private GameObject[] _targets;
-    private NavMeshAgent _navMeshAgent;
-
     [Header("Health")]
     private const int MaxHealth = 6;
     [SerializeField] private int health;
@@ -17,17 +13,15 @@ public class Zombie : MonoBehaviour
     {
         health = MaxHealth;
         gameObject.tag = Constants.Tags.Zombie;
-
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-        _targets = GameObject.FindGameObjectsWithTag(Constants.Tags.LevelTarget);
-        if (_targets.Length > 0) _target = _targets[0].transform;
     }
 
-    private void Update()
+    private void Start()
     {
-        if (_target)
+        GameObject[] targets = GameObject.FindGameObjectsWithTag(Constants.Tags.LevelTarget);
+        if (targets[0])
         {
-            _navMeshAgent.destination = _target.position;
+            NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
+            navMeshAgent.destination = targets[0].transform.position;
         }
     }
 
