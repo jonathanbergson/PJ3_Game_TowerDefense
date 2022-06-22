@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class SetupManager : MonoBehaviour
 {
-    private static SetupManager Instance;
+    public static SetupManager Instance;
 
     public Constants.Levels level;
     // public Constants.Dificulties difficulty;

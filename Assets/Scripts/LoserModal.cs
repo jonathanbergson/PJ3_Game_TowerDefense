@@ -9,10 +9,17 @@ public class LoserModal : MonoBehaviour
 
     private Button _buttonRestart;
     private const string ButtonRestartName = "Content/ButtonRestart";
-    [SerializeField] private Constants.Scenes sceneToRestart = Constants.Scenes.Level01;
 
     private void Start()
     {
+        Constants.Scenes sceneToRestart = SetupManager.Instance.level switch
+        {
+            Constants.Levels.Level01 => Constants.Scenes.Level01,
+            Constants.Levels.Level02 => Constants.Scenes.Level02,
+            Constants.Levels.Level03 => Constants.Scenes.Level03,
+            _ => Constants.Scenes.Level01
+        };
+
         _buttonMenu = transform.Find(ButtonMenuName).GetComponent<Button>();
         if (_buttonMenu) _buttonMenu.onClick.AddListener(delegate { GoToScene(Constants.Scenes.Main); });
 

@@ -77,8 +77,8 @@ public static class Constants
     {
         name = "Level 03",
         maxHealth = 12,
-        spawnPosition = new Vector3(-10, 1, -4),
-        targetPosition = new Vector3(0, 0, 0),
+        spawnPosition = new Vector3(-42,1,8),
+        targetPosition = new Vector3(-10,1,-17),
         waveEasy = new List<Wave>
         {
             new Wave { ZombieCount = 3, DelayTimeToSpawn = 2f },
