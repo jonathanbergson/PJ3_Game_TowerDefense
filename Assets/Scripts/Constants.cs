@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -51,24 +50,28 @@ public static class Constants
         TargetPosition = new Vector3(-40,1,10),
         WaveEasy = new List<Wave>
         {
-            new Wave { ZombieCount = 2, DelayTimeToSpawn = 2f },
             new Wave { ZombieCount = 2, DelayTimeToSpawn = 4f },
-            new Wave { ZombieCount = 3, DelayTimeToSpawn = 6f },
-            new Wave { ZombieCount = 4, DelayTimeToSpawn = 6f },
+            new Wave { ZombieCount = 2, DelayTimeToSpawn = 6f },
+            new Wave { ZombieCount = 4, DelayTimeToSpawn = 8f },
+            new Wave { ZombieCount = 4, DelayTimeToSpawn = 8f },
         }
     };
 
     public static LevelSettings Level02Settings = new LevelSettings
     {
         Name = "Level 02",
-        MaxHealth = 14,
+        MaxHealth = 10,
         SpawnPosition = new Vector3(-22,1,24),
         TargetPosition = new Vector3(-10,1,-24),
         WaveEasy = new List<Wave>
         {
-            new Wave { ZombieCount = 3, DelayTimeToSpawn = 2f },
-            new Wave { ZombieCount = 4, DelayTimeToSpawn = 4f },
-            new Wave { ZombieCount = 4, DelayTimeToSpawn = 4f },
+            new Wave { ZombieCount = 3, DelayTimeToSpawn = 4f },
+            new Wave { ZombieCount = 4, DelayTimeToSpawn = 6f },
+            new Wave { ZombieCount = 4, DelayTimeToSpawn = 6f },
+            new Wave { ZombieCount = 6, DelayTimeToSpawn = 4f },
+            new Wave { ZombieCount = 6, DelayTimeToSpawn = 8f },
+            new Wave { ZombieCount = 4, DelayTimeToSpawn = 2f },
+            new Wave { ZombieCount = 6, DelayTimeToSpawn = 8f },
             new Wave { ZombieCount = 4, DelayTimeToSpawn = 2f },
         }
     };
@@ -76,17 +79,37 @@ public static class Constants
     public static LevelSettings Level03Settings = new LevelSettings
     {
         Name = "Level 03",
-        MaxHealth = 12,
+        MaxHealth = 10,
         SpawnPosition = new Vector3(-42,1,8),
         TargetPosition = new Vector3(-10,1,-17),
         WaveEasy = new List<Wave>
         {
-            new Wave { ZombieCount = 3, DelayTimeToSpawn = 2f },
             new Wave { ZombieCount = 4, DelayTimeToSpawn = 4f },
-            new Wave { ZombieCount = 4, DelayTimeToSpawn = 2f },
-            new Wave { ZombieCount = 6, DelayTimeToSpawn = 6f },
+
+            new Wave { ZombieCount = 4, DelayTimeToSpawn = 4f },
+            new Wave { ZombieCount = 6, DelayTimeToSpawn = 4f },
+            new Wave { ZombieCount = 4, DelayTimeToSpawn = 4f },
+            new Wave { ZombieCount = 6, DelayTimeToSpawn = 4f },
+
             new Wave { ZombieCount = 8, DelayTimeToSpawn = 6f },
+            new Wave { ZombieCount = 6, DelayTimeToSpawn = 2f },
+            new Wave { ZombieCount = 8, DelayTimeToSpawn = 6f },
+            new Wave { ZombieCount = 6, DelayTimeToSpawn = 2f },
+
+            new Wave { ZombieCount = 12, DelayTimeToSpawn = 8f },
             new Wave { ZombieCount = 8, DelayTimeToSpawn = 4f },
+            new Wave { ZombieCount = 12, DelayTimeToSpawn = 2f },
+            new Wave { ZombieCount = 8, DelayTimeToSpawn = 4f },
+
+            new Wave { ZombieCount = 16, DelayTimeToSpawn = 4f },
+            new Wave { ZombieCount = 16, DelayTimeToSpawn = 4f },
+            new Wave { ZombieCount = 16, DelayTimeToSpawn = 4f },
+            new Wave { ZombieCount = 16, DelayTimeToSpawn = 4f },
+
+            new Wave { ZombieCount = 20, DelayTimeToSpawn = 4f },
+            new Wave { ZombieCount = 20, DelayTimeToSpawn = 4f },
+            new Wave { ZombieCount = 20, DelayTimeToSpawn = 4f },
+            new Wave { ZombieCount = 20, DelayTimeToSpawn = 4f },
         }
     };
 

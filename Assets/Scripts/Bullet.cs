@@ -35,7 +35,7 @@ public class Bullet : MonoBehaviour
 
     public void Shoot(Transform target, float speed = 60f)
     {
-        _target = target;
+        this._target = target;
         _speed = speed;
     }
 }
