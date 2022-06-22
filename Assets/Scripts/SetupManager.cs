@@ -1,12 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SetupManager : MonoBehaviour
 {
-    private static SetupManager _instance;
+    private static SetupManager Instance;
 
     public Constants.Levels level;
-    public Constants.Dificulties difficulty;
+    // public Constants.Dificulties difficulty;
 
     [Header("Setup HUD")]
     [SerializeField] private Text levelText;
@@ -17,7 +18,7 @@ public class SetupManager : MonoBehaviour
 
     private void Awake()
     {
-        if (_instance == null) _instance = this;
+        if (Instance == null) Instance = this;
         else Destroy(gameObject);
     }
 
@@ -33,38 +34,34 @@ public class SetupManager : MonoBehaviour
 
         SetLevelName(levelSelected.name);
         SetMaxHealth(levelSelected.maxHealth);
-        SetSpawnPosition(levelSelected.spawnPosition);
+        SetSpawnPosition(levelSelected.spawnPosition, levelSelected.waveEasy);
         SetTargetPosition(levelSelected.targetPosition);
     }
 
     private void SetLevelName(string levelName)
     {
-        if (levelText)
-        {
-            levelText.text = levelName;
-        }
+        if (levelText) levelText.text = levelName;
     }
 
-    private void SetMaxHealth(int maxHealth)
+    private static void SetMaxHealth(int maxHealth)
     {
         HealthManager.Instance.SetMaxHealth(maxHealth);
     }
 
-    private void SetSpawnPosition(Vector3 position)
+    private void SetSpawnPosition(Vector3 position, List<Constants.Wave> waveSettings)
     {
-        if (spawnPoint)
-        {
-            spawnPoint.SetActive(true);
-            spawnPoint.transform.position = position;
-        }
+        if (!spawnPoint) return;
+        spawnPoint.SetActive(true);
+        spawnPoint.transform.position = position;
+
+        SpawnPoint spawner = spawnPoint.GetComponent<SpawnPoint>();
+        spawner.Enable(waveSettings);
     }
 
     private void SetTargetPosition(Vector3 position)
     {
-        if (targetPoint)
-        {
-            targetPoint.SetActive(true);
-            targetPoint.transform.position = position;
-        }
+        if (!targetPoint) return;
+        targetPoint.SetActive(true);
+        targetPoint.transform.position = position;
     }
 }

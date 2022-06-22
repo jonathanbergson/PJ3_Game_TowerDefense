@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,50 +9,51 @@ public class SpawnPoint : MonoBehaviour
 
     [Header("Wave Settings")]
     [SerializeField] private Text waveText;
+    private int _waveIndex;
     private float _waveCountdown;
-    private int _waveIndex = 0;
+    private List<Constants.Wave> _wavesSettings;
+    public bool hasWaveToSpawn;
 
-
-    private void Awake()
+    private void Start()
     {
         gameObject.tag = Constants.Tags.LevelSpawn;
-        _waveCountdown = Constants.Level01WaveEasy[0].Item2;
     }
 
     private void Update()
     {
         _waveCountdown -= Time.deltaTime;
-        if (_waveCountdown <= 0f)
-        {
-            SpawnEnemies();
-        }
+        if (hasWaveToSpawn) SpawnEnemies();
 
-        if (waveText)
-        {
+        if (waveText && _waveCountdown >= 0)
             waveText.text = System.Math.Round(_waveCountdown, 1) + "s";
-        }
+    }
+
+    public void Enable(List<Constants.Wave> waveSettings)
+    {
+        _waveIndex = 0;
+        _wavesSettings = waveSettings;
+
+        SetWaveCountdown();
+        hasWaveToSpawn = true;
     }
 
     private void SpawnEnemies()
     {
-        if (_waveIndex < Constants.Level01WaveEasy.Length)
-        {
-            int enemiesToSpawn = Constants.Level01WaveEasy[_waveIndex].Item1;
-            InstantiateEnemies(enemiesToSpawn);
+        if (_waveCountdown > 0 || _waveIndex >= _wavesSettings.Count) return;
 
-            _waveIndex++;
-            _waveCountdown = Constants.Level01WaveEasy[_waveIndex].Item2;
-        }
+        int zombieCount = _wavesSettings[_waveIndex].ZombieCount;
+        for (int i = 0; i < zombieCount; i++)
+            Instantiate(enemie, transform.position, transform.rotation);
+
+        _waveIndex++;
+        SetWaveCountdown();
     }
 
-    private void InstantiateEnemies(int count)
+    private void SetWaveCountdown()
     {
-        if (enemie)
-        {
-            for (int i = 0; i < count; i++)
-            {
-                Instantiate(enemie, transform.position, transform.rotation);
-            }
-        }
+        if (_waveIndex < _wavesSettings.Count)
+            _waveCountdown = _wavesSettings[_waveIndex].DelayTimeToSpawn;
+        else
+            hasWaveToSpawn = false;
     }
 }
