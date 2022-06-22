@@ -2524,6 +2524,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemie: {fileID: 6694393267412450511, guid: cb3c06015120af748ae6e6d8aea5afe2, type: 3}
+  enemiesTotal: 0
+  enemiesKilled: 0
   waveText: {fileID: 2872650770844349304}
   hasWaveToSpawn: 0
 --- !u!1 &4016540268621363262
@@ -3149,7 +3151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5332198507206999528
 RectTransform:
   m_ObjectHideFlags: 0

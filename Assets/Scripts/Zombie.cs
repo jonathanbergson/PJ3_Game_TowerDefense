@@ -37,6 +37,7 @@ public class Zombie : MonoBehaviour
         if (health <= 0)
         {
             BuildManager.instance.MetralhadoraIncrementReward();
+            SpawnPoint.Instance.KillEnemie();
             Destroy(gameObject);
         }
     }
