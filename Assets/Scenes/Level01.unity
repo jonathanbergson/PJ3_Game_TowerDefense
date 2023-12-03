@@ -10802,6 +10802,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1426923619803288030, guid: cbcdb5e28d56949edbdc7e3c90ae7d6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1549561660729365832, guid: cbcdb5e28d56949edbdc7e3c90ae7d6c, type: 3}
       propertyPath: m_Name
       value: Manager
@@ -10852,6 +10856,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7783108540278666296, guid: cbcdb5e28d56949edbdc7e3c90ae7d6c, type: 3}
       propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: aca4417b1994c0daabc73ee2790b45dd, type: 2}
+    - target: {fileID: 7783108540278666296, guid: cbcdb5e28d56949edbdc7e3c90ae7d6c, type: 3}
+      propertyPath: volume
+      value: 
+      objectReference: {fileID: 237283842}
+    - target: {fileID: 7783108540278666296, guid: cbcdb5e28d56949edbdc7e3c90ae7d6c, type: 3}
+      propertyPath: material
       value: 
       objectReference: {fileID: 2100000, guid: aca4417b1994c0daabc73ee2790b45dd, type: 2}
     m_RemovedComponents: []

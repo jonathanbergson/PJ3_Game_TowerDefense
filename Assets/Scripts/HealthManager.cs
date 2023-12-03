@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
@@ -10,7 +12,10 @@ public class HealthManager : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private Image healthBar;
 
-    [SerializeField] private Material mat;
+    [Header("Post Processing")]
+    [SerializeField] private Volume volume;
+    [SerializeField] private Material material;
+    [SerializeField] private bool isPostProcessingEnabled = true;
 
     private void Awake()
     {
@@ -22,6 +27,14 @@ public class HealthManager : MonoBehaviour
     {
         health = maxHealth;
         ClearBloodOnScreen();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            TogglePostProcessing();
+        }
     }
 
     public void SetMaxHealth(int value)
@@ -47,23 +60,40 @@ public class HealthManager : MonoBehaviour
         }
     }
 
+    private void TogglePostProcessing()
+    {
+        isPostProcessingEnabled = !isPostProcessingEnabled;
+
+        if (volume)
+        {
+            volume.enabled = isPostProcessingEnabled;
+        }
+
+        ClearBloodOnScreen();
+        SetBloodOnScreen();
+    }
+
     private void ClearBloodOnScreen()
     {
-        if (mat == null) return;
-        if (health <= 8) mat.SetFloat("_Edge", 0f);
-        if (health <= 8) mat.SetInt("_lvl1", 0);
-        if (health <= 6) mat.SetInt("_lvl2", 0);
-        if (health <= 4) mat.SetInt("_lvl3", 0);
+        if (material == null) return;
+
+        material.SetFloat("_edge", 0f);
+        material.SetFloat("_noise", 0f);
+        material.SetInt("_lvl1", 0);
+        material.SetInt("_lvl2", 0);
+        material.SetInt("_lvl3", 0);
     }
 
     private void SetBloodOnScreen()
     {
-        if (mat == null) return;
-        if (health <= 8) mat.SetInt("_lvl1", 1);
-        if (health <= 6) mat.SetInt("_lvl2", 1);
-        if (health <= 4) mat.SetInt("_lvl3", 1);
+        if (material == null || isPostProcessingEnabled == false) return;
+
+        if (health <= 8) material.SetInt("_lvl1", 1);
+        if (health <= 6) material.SetInt("_lvl2", 1);
+        if (health <= 4) material.SetInt("_lvl3", 1);
 
         float edge = (maxHealth - health) / (float) maxHealth + 0.1f;
-        mat.SetFloat("_Edge", edge);
+        material.SetFloat("_edge", edge);
+        material.SetFloat("_noise", 700f);
     }
 }
