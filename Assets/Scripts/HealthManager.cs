@@ -10,6 +10,8 @@ public class HealthManager : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private Image healthBar;
 
+    [SerializeField] private Material mat;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -19,6 +21,7 @@ public class HealthManager : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
+        ClearBloodOnScreen();
     }
 
     public void SetMaxHealth(int value)
@@ -34,11 +37,28 @@ public class HealthManager : MonoBehaviour
         {
             float healthPercent = health / (float) maxHealth;
             healthBar.fillAmount = Mathf.Clamp(healthPercent, 0f, 1f);
+            SetBloodOnScreen();
         }
 
         if (health <= 0)
         {
             ModalManager.Instance.ShowModal(ModalManager.ModalType.Loser);
         }
+    }
+
+    private void ClearBloodOnScreen()
+    {
+        if (mat == null) return;
+        if (health <= 8) mat.SetInt("_lvl1", 0);
+        if (health <= 6) mat.SetInt("_lvl2", 0);
+        if (health <= 4) mat.SetInt("_lvl3", 0);
+    }
+
+    private void SetBloodOnScreen()
+    {
+        if (mat == null) return;
+        if (health <= 8) mat.SetInt("_lvl1", 1);
+        if (health <= 6) mat.SetInt("_lvl2", 1);
+        if (health <= 4) mat.SetInt("_lvl3", 1);
     }
 }
